@@ -17,6 +17,15 @@ dependencies:
   '@types/react-dom':
     specifier: ^18.0.6
     version: 18.2.6
+  '@vkontakte/icons':
+    specifier: ^2.44.0
+    version: 2.44.0(react@18.2.0)
+  '@vkontakte/vk-bridge':
+    specifier: ^2.8.1
+    version: 2.8.1
+  '@vkontakte/vkui':
+    specifier: ^5.5.3
+    version: 5.5.3(@vkontakte/icons@2.44.0)(@vkontakte/vk-bridge@2.8.1)(react-dom@18.2.0)(react@18.2.0)
   astro:
     specifier: ^2.7.0
     version: 2.7.0
@@ -605,6 +614,27 @@ packages:
     dev: false
     optional: true
 
+  /@floating-ui/core@1.3.1:
+    resolution: {integrity: sha512-Bu+AMaXNjrpjh41znzHqaz3r2Nr8hHuHZT6V2LBKMhyMl0FgKA62PNYbqnfgmzOhoWZj70Zecisbo4H1rotP5g==}
+    dev: false
+
+  /@floating-ui/dom@1.4.2:
+    resolution: {integrity: sha512-VKmvHVatWnewmGGy+7Mdy4cTJX71Pli6v/Wjb5RQBuq5wjUYx+Ef+kRThi8qggZqDgD8CogCpqhRoVp3+yQk+g==}
+    dependencies:
+      '@floating-ui/core': 1.3.1
+    dev: false
+
+  /@floating-ui/react-dom@2.0.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-rZtAmSht4Lry6gdhAJDrCp/6rKN7++JnL1/Anbr/DdeyYXQPxvg/ivrbYvJulbRf4vL8b212suwMM2lxbv+RQA==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@floating-ui/dom': 1.4.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
     engines: {node: '>=6.0.0'}
@@ -711,6 +741,12 @@ packages:
       - supports-color
     dev: false
 
+  /@swc/helpers@0.5.1:
+    resolution: {integrity: sha512-sJ902EfIzn1Fa+qYmjdQqh8tPsoxyBz+8yBKC2HKUxyezKJFwPGOn7pv4WY6QuQW//ySQi5lJjA/ZT9sNWWNTg==}
+    dependencies:
+      tslib: 2.5.3
+    dev: false
+
   /@types/babel__core@7.20.1:
     resolution: {integrity: sha512-aACu/U/omhdk15O4Nfb+fHgH/z3QsfQzpnvRZhYhThms83ZnAOZz7zZAWO7mn2yyNQaA4xTO8GLK3uqFU4bYYw==}
     dependencies:
@@ -808,6 +844,56 @@ packages:
 
   /@types/yargs-parser@21.0.0:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
+    dev: false
+
+  /@vkontakte/icons-sprite@1.1.1(react@18.2.0):
+    resolution: {integrity: sha512-mZt34A0wK72+C0Jr0rtypuEFtfJO3qBFt9RQQC5lpBDTVGB+sMKmI8Vi+CYbq1kPO8Uv7GiPQxLv8+Ti7cT24g==}
+    engines: {yarn: ^1.21.1}
+    peerDependencies:
+      react: ^16.9.34 || ^17 || ^18
+    dependencies:
+      '@swc/helpers': 0.5.1
+      react: 18.2.0
+    dev: false
+
+  /@vkontakte/icons@2.44.0(react@18.2.0):
+    resolution: {integrity: sha512-wvwlXZmI/rjXnEo2ZBXqTUutyytXbdN9hOlLe/4c92liqLGR4/BOk0PcHAwaEu6We471xzPfMnWFGikBQyg16g==}
+    engines: {yarn: ^1.21.1}
+    peerDependencies:
+      react: ^16.9.34 || ^17 || ^18
+    dependencies:
+      '@vkontakte/icons-sprite': 1.1.1(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
+  /@vkontakte/vk-bridge@2.8.1:
+    resolution: {integrity: sha512-ARaqWDZiPJf2KGJCl88zY1B8UfSy2M8uCwCFvUJix8YJtxygBi9FC64eTZhOJN6g0rlHP1UJHNch0RWDb9EKOw==}
+    dev: false
+
+  /@vkontakte/vkjs@0.32.4:
+    resolution: {integrity: sha512-+YMrZ5sEpUW97HWE4EHjQmC1dypMWy6mYTP24BdW7+9SuOPozcTBEa4NUdAMPRfSlsd4GJekULIPm7Fbm4kZrg==}
+    engines: {yarn: ^1.21.1}
+    dependencies:
+      '@swc/helpers': 0.5.1
+    dev: false
+
+  /@vkontakte/vkui@5.5.3(@vkontakte/icons@2.44.0)(@vkontakte/vk-bridge@2.8.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-kGWYl4iJWb+K3WiS0Q3kyNNTSxPh24xy2j92TdiwHx6sGBn1HkNMVaq2RTFoLS3tUyygIhM6+jAre8pCvywTdg==}
+    peerDependencies:
+      '@vkontakte/icons': ^2.1.1
+      '@vkontakte/vk-bridge': ^2.4.9
+      react: ^17.0.0 || ^18.1.0
+      react-dom: ^17.0.0 || ^18.1.0
+    dependencies:
+      '@floating-ui/react-dom': 2.0.1(react-dom@18.2.0)(react@18.2.0)
+      '@swc/helpers': 0.5.1
+      '@vkontakte/icons': 2.44.0(react@18.2.0)
+      '@vkontakte/vk-bridge': 2.8.1
+      '@vkontakte/vkjs': 0.32.4
+      dayjs: 1.11.8
+      mitt: 3.0.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@vscode/emmet-helper@2.9.2:
@@ -1192,6 +1278,10 @@ packages:
 
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
+    dev: false
+
+  /dayjs@1.11.8:
+    resolution: {integrity: sha512-LcgxzFoWMEPO7ggRv1Y2N31hUf2R0Vj7fuy/m+Bg1K8rr+KAs1AEy4y9jd5DXe8pbHgX+srkHNS7TH6Q6ZhYeQ==}
     dev: false
 
   /debug@4.3.4:
@@ -2298,6 +2388,10 @@ packages:
   /mimic-fn@4.0.0:
     resolution: {integrity: sha512-vqiC06CuhBTUdZH+RYl8sFrL096vA45Ok5ISO6sE/Mr1jRbGH4Csnhi8f3wKVl7x8mO4Au7Ir9D3Oyv1VYMFJw==}
     engines: {node: '>=12'}
+    dev: false
+
+  /mitt@3.0.0:
+    resolution: {integrity: sha512-7dX2/10ITVyqh4aOSVI9gdape+t9l2/8QxHrFmUXu4EEUpdlxl6RudZUPZoc+zuY2hk1j7XxVroIVIan/pD/SQ==}
     dev: false
 
   /mri@1.2.0:
