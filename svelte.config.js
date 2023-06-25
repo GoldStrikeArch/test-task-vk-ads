@@ -1,5 +1,8 @@
-import { vitePreprocess } from '@astrojs/svelte';
+import { vitePreprocess } from "@astrojs/svelte";
+import preprocessReact from "svelte-preprocess-react/preprocessReact";
 
 export default {
-	preprocess: vitePreprocess(),
+  preprocess: preprocessReact({
+    preprocess: vitePreprocess(),
+  }),
 };

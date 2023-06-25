@@ -18,5 +18,8 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "svelte": "^3.55.0"
+  },
+  "devDependencies": {
+    "svelte-preprocess-react": "^0.15.0"
   }
 }
