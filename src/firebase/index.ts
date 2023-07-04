@@ -6,6 +6,8 @@ import {
   signOut,
 } from "firebase/auth";
 
+import { getFirestore, collection } from "firebase/firestore";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBBCA8JxvRzTZ1gU_Tb_bkTw9nIig2vRMw",
   authDomain: "test-task-vk-ads.firebaseapp.com",
@@ -23,3 +25,10 @@ export const login = () => {
 };
 
 export const logout = () => signOut(auth);
+
+export const todosCollection = collection(getFirestore(firebaseApp), "todos");
+
+export type Todo = {
+  id: string;
+  text: string;
+};
