@@ -1,11 +1,20 @@
 import { useCollection } from "react-firebase-hooks/firestore";
 import { Todo, firebaseApp, todosCollection } from "../firebase";
 import { Fragment } from "react";
-import { collection, getFirestore } from "firebase/firestore";
+import {
+  DocumentData,
+  QueryDocumentSnapshot,
+  QuerySnapshot,
+  collection,
+  getFirestore,
+} from "firebase/firestore";
 import { reactify } from "svelte-preprocess-react";
 import TodoListSvelte from "./TodoList.svelte";
 
 const List = reactify(TodoListSvelte);
+
+const getTodos = (docs: QueryDocumentSnapshot<DocumentData>[]) =>
+  docs.map((doc) => ({ ...doc.data(), id: doc.id })) as Todo[];
 
 type Props = {
   user: {
@@ -22,18 +31,15 @@ const TodoList = ({ user }: Props) => {
 
   return (
     <div>
-      <p>
+      <div>
         {error && <strong>Error: {JSON.stringify(error)}</strong>}
         {loading && <span>Collection: Loading...</span>}
         {value && (
           <span>
-            Collection:{" "}
-            <List
-              todos={(value.docs.map((d) => d.data()) as unknown) as Todo[]}
-            />
+            Todos: <List todos={getTodos(value.docs)} />
           </span>
         )}
-      </p>
+      </div>
     </div>
   );
 };

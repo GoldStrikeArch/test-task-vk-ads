@@ -9,7 +9,7 @@
 <ul>
   {#each todos as todo (todo.id)}
     <li animate:flip={{ duration: 200 }} transition:fly|local={{ y: 200 }}>
-      <react:TodoItem text={todo.text} />
+      <react:TodoItem text={todo.text} id={todo.id} />
     </li>
   {/each}
 </ul>
