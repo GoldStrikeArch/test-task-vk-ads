@@ -6,7 +6,7 @@ import {
   signOut,
 } from "firebase/auth";
 
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore, collection, doc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBBCA8JxvRzTZ1gU_Tb_bkTw9nIig2vRMw",
@@ -26,7 +26,11 @@ export const login = () => {
 
 export const logout = () => signOut(auth);
 
-export const todosCollection = collection(getFirestore(firebaseApp), "todos");
+export const getTodosCollection = (userId: string) =>
+  collection(getFirestore(firebaseApp), `todos/${userId}/list`);
+
+export const getTodoDoc = (userId: string, docId: string) =>
+  doc(getFirestore(firebaseApp), `todos/${userId}/list/${docId}`);
 
 export type Todo = {
   id: string;

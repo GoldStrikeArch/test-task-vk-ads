@@ -1,12 +1,15 @@
 import { useCollection } from "react-firebase-hooks/firestore";
-import { Todo, firebaseApp, todosCollection } from "../firebase";
-import { Fragment } from "react";
+import { Todo, getTodosCollection } from "../firebase";
+import { Fragment, useState } from "react";
 import {
   DocumentData,
   QueryDocumentSnapshot,
   QuerySnapshot,
+  addDoc,
   collection,
   getFirestore,
+  orderBy,
+  query,
 } from "firebase/firestore";
 import { reactify } from "svelte-preprocess-react";
 import TodoListSvelte from "./TodoList.svelte";
@@ -22,17 +25,36 @@ type Props = {
   };
 };
 const TodoList = ({ user }: Props) => {
+  const [text, setText] = useState("");
+  const todosCollection = getTodosCollection(user.uid);
   const [value, loading, error] = useCollection(
-    collection(getFirestore(firebaseApp), "todos/" + user.uid + "/list"),
+    query(todosCollection, orderBy("createdAt")),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
 
+  const handleCreate = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== "Enter") return;
+    if (!text.trim()) return;
+
+    await addDoc(todosCollection, {
+      text: text.trim(),
+      createdAt: Date.now(),
+    });
+
+    setText("");
+  };
+
   return (
     <div>
       <div>
-        {error && <strong>Error: {JSON.stringify(error)}</strong>}
+        <input
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={handleCreate}
+        />
+        {/* {error && <strong>Error: {JSON.stringify(error)}</strong>} */}
         {loading && <span>Collection: Loading...</span>}
         {value && (
           <span>
